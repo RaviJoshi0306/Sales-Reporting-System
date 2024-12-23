@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sales Reporting System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rounded+Mplus+2c:wght@400;700&display=swap" rel="stylesheet" />
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Add this in your HTML head or just before the closing body tag -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="css/update.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="js/env.js"></script>
+    <script type="module" src="js/update2.js"></script>
+
+    <script src="js/update1.js"></script>
+  </head>
+  <body>
+    <!-- Toast Container -->
+    <div
+      id="toast-container"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw; /* Full viewport width */
+        max-width: 100%; /* Ensure no width restriction */
+        background-color: #00c4cc;
+        color: white;
+        padding: 15px;
+        text-align: center;
+        display: none;
+        z-index: 9999;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin: 0; /* Remove any margin */
+        box-sizing: border-box;
+      "
+    >
+      <div id="toastMessage" style="font-size: 1rem; display: inline-block; padding-right: 10px">
+        ユーザー登録が完了しました
+      </div>
+      <button
+        type="button"
+        id="toast-close-btn"
+        aria-label="Close"
+        style="background: none; border: none; color: white; cursor: pointer"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="fill: white; width: 24px; height: 24px"
+        >
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+
+
+    <div
+  id="delete-toast-container"
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    max-width: 100%;
+    background-color: #00c4cc;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    box-sizing: border-box;
+  "
+>
+  <div id="deleteToastMessage" style="font-size: 1rem; display: inline-block; padding-right: 10px">
+    Report deleted successfully!
+  </div>
+  <button
+    type="button"
+    id="delete-toast-close-btn"
+    aria-label="Close"
+    style="background: none; border: none; color: white; cursor: pointer"
+  >
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style="fill: white; width: 24px; height: 24px"
+    >
+      <path
+        d="M18 6L6 18M6 6L18 18"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+</div>
+
+
+    <header class="navbar navbar-expand-lg navbar-light bg-white" id="the_header">
+      <div class="container-fluid d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center" id="header_div">
+          <a href="report_review.html" class="d-flex align-items-center text-decoration-none">
+            <span id="company-logo" class="rounded-pill px-3 py-1 bg-light-blue text-secondary">
+              <img src="https://i.postimg.cc/SKq3ZtJZ/KK-logo.png" alt="Sanyo Steel Co Ltd Logo" id="company_logo" />
+            </span>
+            <span id="report-review" class="h4 font-weight-bold ml-2" id="company_name" style="color: #00a4b3"
+              >営業報告システム</span
+            >
+          </a>
+        </div>
+
+        <div class="d-flex align-items-center">
+          <!-- Language Switch -->
+          <div id="language-switch">
+            <a id="lang-jp" class="text-muted" onclick="switchToJapanese()">日本語</a> |
+            <a id="lang-en" class="text-muted" onclick="switchToEnglish()">English</a>
+          </div>
+
+          <div>
+            <button onclick="window.location.href='salesreport.html';" type="button" id="new-report-btn">
+              <i class="fas fa-edit"></i>
+              <span id="new-report-text">新規作成</span>
+            </button>
+          </div>
+
+          <!-- Profile Dropdown -->
+          <div class="dropdown" id="profile_button">
+            <button class="profile-button" type="button" id="profileButton">
+              <i class="fas fa-user user-icon"></i>
+              <span id="salesRepName">Loading...</span>
+              <i class="fas fa-chevron-down dropdown-arrow" id="dropdownArrow" onclick="toggleDropdown(event)"></i>
+            </button>
+            <!-- Dropdown Menu -->
+            <ul class="dropdown-menu" id="dropdownMenu">
+              <li>
+                <button id="logout" class="dropdown-item text-danger" onclick="logout()">
+                  <span id="logout-text">ログアウト</span>
+                  <i class="fas fa-power-off"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Form -->
+    <form id="mainForm">
+      <div class="form-header">
+        <h1><i class="fas fa-edit"></i> 営業報告編集</h1>
+      </div>
+     
+      <div class="horizontal-group">
+        <!-- Date Field -->
+        <div class="field-group">
+          <label for="date">DATE:</label>
+          <input type="date" id="date" />
+        </div>
+        <!-- Customer Field -->
+        <div class="field-group">
+          <label for="company">CUSTOMER:</label>
+          <input type="text" id="company" />
+        </div>
+      </div>
+      
+      <label for="meeting_title">TITLE:</label>
+      <input type="text" id="meeting_title" />
+
+ 
+
+      <div class="horizontal-group">
+        <div class="field-group">
+          <label for="sales_rep">SALES PERSON:</label>
+          <input type="text" id="sales_rep" />
+        </div>
+        <div class="field-group">
+          <label for="counter_part_at_customer_side">COUNTER PART AT CUSTOMER SIDE:</label>
+          <input type="text" id="counter_part_at_customer_side" />
+        </div>
+      </div>
+
+      <label for="report_contents">CONTENTS:</label>
+      <textarea id="report_contents" rows="10"></textarea>
+<!-- Delete Modal -->
+<div id="deleteModal" class="delete-modal">
+  <div class="delete-modal-content">
+    <span class="delete-close-btn" onclick="closeDeleteModal()">&times;</span>
+    <h2 class="delete-modal-title">レポートの削除</h2>
+    <p class="delete-modal-text">このレポートを削除してもよろしいですか？</p>
+    <div class="delete-modal-buttons">
+      <button class="delete-cancel-btn" onclick="closeDeleteModal()">
+        キャンセル
+      </button>
+      <button class="delete-confirm-btn" onclick="confirmDeleteReport(event)">
+        削除する
+      </button>
+      
+    </div>
+  </div>
+</div>
+
+
+
+      <!-- Buttons Container -->
+      <div class="button-group">
+      
+        <button class="btn" type="button" id="replaceButton" onclick="showModal()">Replace</button>
+        <button class="btn" type="button" id="backButton" onclick="goBack()">Back</button>
+        <button class="btn deleteButton" type="button" onclick="openDeleteModal(event)">Delete Report</button>
+
+      </div>
+    </form>
+
+    <!-- Modal Overlay -->
+    <div id="modalOverlay" style="display: none" onclick="closeReplacementModal()"></div>
+    <!-- Replacement Modal -->
+    <div id="replacementModal" style="display: none">
+      <div class="modal-content">
+        <!-- Replacement Modal Header -->
+        <div class="form-header">
+          <h1>
+            <i class="fas fa-edit"></i>
+            営業報告編集
+          </h1>
+          <p id="confirmationMessage" style="display: none">以下の内容で送信します。</p>
+        </div>
+
+        
+
+        <div class="horizontal-group">
+          <div class="field-group">
+            <label for="modalDate">Date:</label>
+            <input id="modalDate" type="text" />
+          </div>
+          <div class="field-group">
+            <label for="modalCompany">Company:</label>
+            <input id="modalCompany" type="text" />
+          </div>
+        </div>
+
+        <label for="modalMeetingTitle">Meeting Title:</label>
+        <input id="modalMeetingTitle" type="text" />
+
+        <div class="horizontal-group">
+          <div class="field-group">
+            <label for="modalSalesRep">Sales Representative:</label>
+            <input id="modalSalesRep" type="text" />
+          </div>
+          <div class="field-group">
+            <label for="modalCounterPart">Counterpart:</label>
+            <input id="modalCounterPart" type="text" />
+          </div>
+        </div>
+
+       
+
+        <label for="modalReportContents">Report Contents:</label>
+        <textarea id="modalReportContents"></textarea>
+
+        <div class="horizontal-group">
+         
+          <button id="confirmReplacementButton" class="modal-button">Confirm</button>
+          <button id="closeModalButton" class="modal-button cancel-button">Close</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

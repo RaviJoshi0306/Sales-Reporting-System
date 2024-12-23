@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>営業報告閲覧システム/Sales Report Review Mode</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<link rel="stylesheet" href="css/report_review.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+<script src="js/report_review1.js"></script>
+
+<script src="js/env.js"></script>
+<script type="module" src="js/report_review2.js"></script>
+</head>
+
+<body>
+
+
+    <header class="navbar navbar-expand-lg navbar-light bg-white" id="the_header">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center" id="header_div">
+                <a href="report_review.html" class="d-flex align-items-center text-decoration-none">
+                    <span id="company-logo" class="rounded-pill px-3 py-1 bg-light-blue text-secondary">
+                        <img src="https://i.postimg.cc/SKq3ZtJZ/KK-logo.png" alt="Sanyo Steel Co Ltd Logo"
+                            id="company_logo">
+                    </span>
+                    <span id="report-review" class="h4 font-weight-bold ml-2" id="company_name"
+                        style="color: #00a4b3;">営業報告システム</span>
+                </a>
+            </div>
+
+
+
+            <div class="d-flex align-items-center">
+                <!-- Language Switch -->
+                <div id="language-switch">
+                    <a id="lang-jp" class="text-muted" onclick="switchLanguage('ja')">日本語</a> |
+                    <a id="lang-en" class="text-muted" onclick="switchLanguage('en')">English</a>
+                </div>
+
+                <div >
+                    <button onclick="window.location.href='salesreport.html';" type="button" id="new-report-btn">
+                        <i class="fas fa-edit"></i>
+                        <span id="new-report-text">新規作成</span>
+                    </button>
+                </div>
+
+                <!-- Profile Dropdown -->
+                <div class="dropdown" id="profile_button">
+                    <button class="btn profile-button" type="button" id="profileButton">
+                        <i class="fas fa-user user-icon"></i>
+                        <span id="salesRepName">Loading...</span>
+                        <i class="fas fa-chevron-down dropdown-arrow" id="dropdownArrow"
+                            onclick="toggleDropdown(event)"></i>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <ul class="dropdown-menu" id="dropdownMenu" >
+                        <li>
+                            <button id="logout" class="dropdown-item text-danger" onclick="logout()">
+                                <span id="logout-text">ログアウト</span>
+                                <i class="fas fa-power-off"></i> 
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </header>
+
+    <div class="outer-container">
+        <form>
+
+            <div id="form-header">
+                <i class="fas fa-file-alt" style="margin-right: 10px; font-size: 18px; color: #00bcd4;"></i>
+                <span id="form-header-text">営業報告一覧</span> <!-- Added id for the span -->
+            </div>
+
+
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <!-- Search Parameter Dropdown -->
+                <div id="dropdown-container">
+                    <!--<label id="search_label_parameter" for="search_parameter" style="margin: 0; padding: 0;">Search
+                        By:</label> -->
+                    <select id="search_parameter">
+                        <option value="counter_part_at_customer_side">顧客名</option>
+                        <option value="date">日付</option>
+                        <option value="meeting_title">タイトル</option>
+                        <option value="report_contents">内容</option>
+                    </select>
+                </div>
+
+
+
+                <div id="search-container">
+                    <!-- Search Icon Button -->
+                    <button type="button" id="search" onclick="searchReports()">
+                        <i class="fas fa-search" style="color: #525151;"></i>
+                    </button>
+                
+                    <!-- Search Input Field -->
+                    <input type="text" id="search_value" placeholder="検索" onkeyup="showSuggestions()" />
+                </div>
+                
+
+
+            </div>
+
+            <!-- Suggestions Container 
+            <div id="suggestions" class="suggestions-container"></div>-->
+
+
+
+        </form>
+        <div class="table-container">
+            <div id="results"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

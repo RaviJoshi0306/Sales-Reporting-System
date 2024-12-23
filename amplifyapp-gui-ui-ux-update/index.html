@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Registration and Login</title>
+
+    <link rel="stylesheet" href="css/index.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="toast hidden" id="toast-container">
+        <div class="toast-body" id="toastMessage">ユーザー登録が完了しました</div>
+        <button type="button" class="toast-btn" data-dismiss="toast" aria-label="Close">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M18 6L6 18M6 6L18 18"
+              stroke="white"
+              stroke-width="2" 
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="left-panel">
+        <div class="left-panel-system">
+          <h1 class="system-title" id="system-title">営業報告システム</h1>
+          <p class="system-title2">-PiNO-</p>
+        </div>
+        <div class="logo">
+          <img src="https://i.postimg.cc/3r0FRMGQ/TOPt-T-t-t.png" alt="KK Logo" class="kk-logo" />
+        </div>
+      </div>
+
+      <!-- Right panel (now the form section) -->
+      <div class="form-container">
+        <div class="language-switch">
+          <button id="lang-jp" class="lang-button active">日本語</button>
+          <span>|</span>
+          <button id="lang-en" class="lang-button">English</button>
+        </div>
+
+        <!-- Sign Up Form (default) -->
+        <form id="registerForm" class="hidden">
+          <h1>アカウント作成</h1>
+          <input class="user-input" type="text" placeholder="Name" id="registerName" required />
+          <input class="user-input" type="email" placeholder="Email" id="registerEmail" required />
+          <div class="input-container">
+            <input
+              class="user-input"
+              type="password"
+              placeholder="Password"
+              id="registerPassword"
+              required
+              oninput="checkPassword()"
+            />
+            <span class="toggle-password eye-icon1" id="togglePassword1">
+              <i class="fas fa-eye"></i>
+            </span>
+            <div id="password_instruction">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_2192_1654)">
+                  <path
+                    d="M10.0013 6.66675V10.0001M10.0013 13.3334H10.0096M18.3346 10.0001C18.3346 14.6025 14.6037 18.3334 10.0013 18.3334C5.39893 18.3334 1.66797 14.6025 1.66797 10.0001C1.66797 5.39771 5.39893 1.66675 10.0013 1.66675C14.6037 1.66675 18.3346 5.39771 18.3346 10.0001Z"
+                    stroke="#637887"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_2192_1654">
+                    <rect width="20" height="20" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+
+              <p class="passwordRequirementsOnesentence">
+                パスワードは12文字以上、大文字、数字、記号を含む必要があります。
+              </p>
+            </div>
+            <input
+              class="user-input"
+              type="password"
+              placeholder="Confirm Password"
+              id="registerConfirmPassword"
+              required
+            />
+            <span class="toggle-password eye-icon2" id="togglePassword2">
+              <i class="fas fa-eye"></i>
+            </span>
+          </div>
+          <br />
+
+          <p class="message" id="registerMessage"></p>
+
+          <div class="button-container">
+            <button class="btn-signup" type="submit" id="signupsubmit">登録する</button>
+            <button class="btn-gray" id="toggleToSignIn" type="button">戻る</button>
+          </div>
+          
+        </form>
+
+        <!-- Sign In Form (hidden by default) -->
+        <form id="loginForm">
+          <h1>サインイン</h1>
+          <div class="input-container">
+            <input class="user-input" type="email" placeholder="メールアドレスを入力" id="loginEmail" required />
+            <input class="user-input" type="password" placeholder="パスワードを入力" id="loginPassword" required />
+            <span class="toggle-password eye-icon3" id="togglePassword3">
+              <i class="fas fa-eye"></i>
+            </span>
+          </div>
+          <a href="forgot.html" id="forgotPasswordLink">パスワードを忘れましたか？</a>
+          <button class="btn" type="submit" id="loginButton">ログイン</button>
+          <p class="message" id="loginMessage"></p>
+          <button class="btn-white" id="toggleToSignUp" type="button">新規登録</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup-overlay hidden" id="popupOverlay">
+      <div class="popup-card">
+        <div class="forgot_text">
+          <h2 id="forgot_header">パスワード再設定</h2>
+          <p id="forgot_para">入力したメールアドレスに、パスワード再設定のご案内をお送りします。</p>
+          <input type="email" id="emailInput" placeholder="メールアドレスを入力してください" />
+        </div>
+        <hr id="forgot_line" />
+        <div class="forgot_buttons">
+          <div class="backtologin">
+            <button id="backtologin">ログイン画面に戻る</button>
+          </div>
+          <div class="popup-actions">
+            <button id="sendEmailButton">送信する</button>
+          </div>
+        </div>
+        <button class="popup-close" id="popupClose">×</button>
+      </div>
+    </div>
+    <!-- Success Popup -->
+    <div class="success-popup" id="successPopup">
+      <div class="success-popup-content">
+        <p id="successMessage">パスワードリセット用のリンクを以下のメールアドレスに送信しました</p>
+        <p id="emailAddress"></p>
+        <button class="close-popup" id="closePopup">×</button>
+      </div>
+    </div>
+
+    <script src="js/env.js"></script>
+    <script type="module" src="js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
+
+@font-face {
+  font-family: 'Rounded Mplus 1c Bold';
+  src: url('/fonts/rounded-mplus-20150529/rounded-mplus-1c-bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rounded Mplus 1c';
+  src: url('/fonts/rounded-mplus-20150529/rounded-mplus-1c-regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Rounded Mplus 1c', 'Quicksand', sans-serif;
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Ensure body takes full height of the viewport */
+  display: flex;
+  overflow: hidden; /* Hide the vertical scrollbar */
+}
+
+h1,
+h2 {
+  font-family: 'Rounded Mplus 1c Bold', 'Quicksand', sans-serif;
+}
+
+input,
+button {
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  font-family: 'Rounded Mplus 1c Bold', 'Quicksand', sans-serif;
+  background-color: #00c4cc;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.toast {
+  position: fixed;
+  display: flex;
+  opacity: 0.9;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  padding: 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: #00c4cc;
+  color: white;
+  border-radius: 12px;
+  justify-content: center;
+  shadow: black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.toast-body {
+  color: #fff;
+  text-align: center;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: 'Rounded Mplus 1c Bold';
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  width: 90%;
+}
+
+.toast-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.left-panel,
+.form-container {
+  width: 50%;
+  height: 100vh; /* Ensures both panels take full height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.left-panel {
+  background-color: #00c4cc;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center the content */
+  align-items: center;
+  text-align: right; /* Align the text inside each element to the right */
+  position: relative;
+  padding: 20px;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevent any unwanted scrolling */
+}
+
+.left-panel-system {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 200px;
+  justify-content: center;
+}
+
+.system-title,
+.system-title2 {
+  width: 100%;
+  font-family: 'Rounded Mplus 1c Bold', 'Quicksand', sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
+  color: white;
+}
+
+.left-panel .logo {
+  margin-top: -20px; /* Move the logo container slightly upward */
+}
+
+.left-panel .logo img {
+  max-width: 100%; /* Ensure the image does not exceed container width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the full image fits */
+  display: block; /* Prevent any inline element spacing issues */
+}
+
+.form-container {
+  background: #ffffff;
+  color: #00c4cc;
+}
+
+#loginForm {
+  width: 560px;
+}
+.input-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.user-input {
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid #dbe0e5;
+  background: #fff;
+  padding-right: 40px;
+}
+
+.eye-icon1 {
+  position: absolute;
+  right: 10px; /* Adjust the space from the right edge */
+  top: 25px;
+  cursor: pointer;
+}
+
+.eye-icon2 {
+  position: absolute;
+  right: 10px; /* Adjust the space from the right edge */
+  top: 128px;
+  cursor: pointer;
+}
+
+.eye-icon3 {
+  position: absolute;
+  right: 10px; /* Adjust the space from the right edge */
+  top: 83px;
+  cursor: pointer;
+}
+
+.btn {
+  width: 100%;
+  height: 56px;
+  margin-top: 10px;
+  border-radius: 12px;
+  gap: 8px;
+  background: #00c4cc;
+  color: white;
+}
+.btn-white {
+  width: 100%;
+  height: 56px;
+  margin-top: 5px;
+  background-color: #fff;
+  color: #00c4cc;
+  border-radius: 12px;
+  border: 1.5px solid #00c4cc;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px; /* Adjusts the spacing between the buttons */
+  margin-top: 5px;
+  height: 56px;
+}
+
+.btn-signup {
+  background-color: #00c4cc;
+  color: white;
+  border: none;
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px 24px; /* Adequate padding for button size */
+  font-size: 16px; /* Font size matching the example */
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+  height: 56px;
+  width: 319px;
+}
+.btn-gray {
+  background-color: #a0a0a0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  height: 56px;
+}
+
+.btn-signup:hover,
+.btn-gray:hover {
+  opacity: 0.9; /* Slight transparency on hover */
+}
+
+#forgotPasswordLink {
+  display: flex;
+  justify-content: right;
+  font-size: 14px;
+  color: #007bff; /* Optional: Set link color */
+  text-decoration: none; /* Remove underline */
+  margin-bottom: 32px;
+  margin-top: 16px;
+}
+
+.forgotPasswordLink:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+.toggle-password {
+  cursor: pointer;
+  position: absolute;
+}
+
+.message-error {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+.toggle-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.toggle-buttons p {
+  margin: 0 10px;
+}
+
+.toggle-button {
+  background: none;
+  border: 2px solid #00ced1; /* Add a border */
+  color: #00ced1;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 10px;
+  padding: 10px 20px; /* Add padding for better appearance */
+  border-radius: 5px; /* Rounded corners for a better look */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.toggle-button:hover {
+  background-color: #00ced1; /* Change background on hover */
+  color: white; /* Change text color on hover */
+}
+
+.toggle-button.active {
+  background-color: #00ced1; /* Highlight background for active button */
+  color: white; /* Change text color for active button */
+}
+
+.company-info {
+  width: 20%;
+  background-color: #cffdff;
+  padding: 10px;
+  color: #333; /* Greyish black */
+  text-align: center;
+  margin-bottom: 20px; /* Space between company info and title */
+  border-radius: 10px; /* Adjust the value for more or less rounding */
+}
+
+.company-name {
+  margin: 0;
+  font-size: 18px; /* Adjust size as needed */
+}
+
+.language-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.lang-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #00ced1;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.lang-button.active {
+  color: #00ced1;
+  font-weight: bold;
+}
+
+.lang-button:not(.active) {
+  color: grey;
+}
+
+.lang-button:focus {
+  outline: none;
+}
+
+span {
+  margin: 0 5px;
+  color: grey;
+}
+
+.passwordRequirementsOnesentence {
+  color: #637887;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: 'Rounded Mplus 1c';
+  font-size: 14px;
+  font-style: normal;
+  margin: 0;
+  font-weight: 400;
+}
+
+#password_instruction {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  gap: 3px;
+}
+
+.app-name {
+  font-size: 24px; /* Adjust size as needed */
+  font-family: Arial, sans-serif; /* Optional: Specify a font family */
+  color: white; /* Optional: Set text color */
+}
+
+.kk-logo {
+  position: absolute; /* Allow positioning relative to the parent */
+  bottom: 10px; /* Add spacing from the bottom of the left panel */
+  left: 0px; /* Add spacing from the left of the left panel */
+  max-height: 50%; /* Ensure the image doesn't exceed 90% of the panel height */
+  max-width: 50%; /* Maintain aspect ratio and avoid stretching */
+  object-fit: contain; /* Ensure it fits nicely within the bounds */
+  padding-bottom: 10px; /* Add padding to avoid getting too close to the bottom */
+}
+
+@media screen and (max-width: 768px) {
+  .kk-logo {
+    max-height: 70%; /* Resize further for smaller screens */
+    padding-bottom: 5px; /* Adjust buffer for smaller screens */
+  }
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#forgot_para {
+  width: 616px;
+  height: 24px;
+  margin-bottom: 32px;
+}
+
+.forgot_text {
+  height: 142px;
+  padding-bottom: 10px;
+}
+#forgot_line {
+  margin: 32px 0;
+  border: 1px solid #e5e5e5;
+}
+#emailInput {
+  display: flex;
+  width: 100%;
+  padding: 12px;
+}
+.forgot_buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.popup-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  width: 680px;
+  height: 270px;
+  text-align: left;
+  position: relative;
+}
+
+.popup-card h2 {
+  margin: 0 0 10px;
+  font-size: 1.5em;
+}
+
+.popup-card p {
+  margin: 0 0 15px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.popup-card input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.backtologin button {
+  display: flex;
+  background: white;
+  color: #00c4cc;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-family: 'Rounded Mplus 1c', 'Quicksand', sans-serif;
+  font-size: 0.9em;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.popup-overlay.hidden {
+  display: none;
+}
+
+.popup-actions button {
+  background: #00c4cc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.popup-actions .button:hover {
+  background: #0056b3;
+}
+
+.popup-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: black;
+}
+
+.success-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #00c4cc;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  z-index: 1000;
+  display: none;
+}
+
+.success-popup-content {
+  margin: 0 auto;
+  color: white;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 78px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+#successMessage #emailAddress {
+  color: white;
+}
+
+.close-popup:hover {
+  color: white;
+}

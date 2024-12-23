@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400&display=swap');
+
+@font-face {
+  font-family: 'Rounded Mplus 1c Bold';
+  src: url('/fonts/rounded-mplus-20150529/rounded-mplus-1c-bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rounded Mplus 1c';
+  src: url('/fonts/rounded-mplus-20150529/rounded-mplus-1c-regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+body {
+  font-family: 'Rounded Mplus 1c', 'Quicksand', sans-serif;
+  background-color: #cffdff; /* Light blue background */
+}
+
+header.navbar {
+  background-color: #f8f9fa;
+  padding: 10px 20px;
+  border-bottom: 2px solid #e0f7f9; /* Light bottom border */
+}
+/* Company Name Styling */
+#company-name {
+  font-weight: 500;
+  background-color: #e0f7f9; /* Light blue background for pill shape */
+  color: #00bcd4; /* Slightly darker blue text */
+  border-radius: 50px; /* Rounded pill shape */
+  padding: 200px 200px;
+}
+
+/* Report System Title Styling */
+#report-review {
+  font-size: 1.2rem;
+  color: #00bcd4;
+}
+
+#language-switch a {
+  color: #6c757d; /* Default muted color */
+  text-decoration: none; /* Remove underline */
+}
+
+#language-switch a:hover {
+  color: #00bcd4; /* Highlight on hover */
+  cursor: pointer;
+}
+
+/* Active language button */
+#language-switch a.active {
+  color: #00bcd4 !important; /* Ensure active color is applied */
+  font-weight: bold; /* Optionally bold for emphasis */
+  text-decoration: none; /* Remove underline for active */
+}
+
+#language-switch {
+  margin-right: 40px;
+}
+.profile-button {
+  padding: 10px 20px; /* Adjust padding for better space around the name */
+  font-size: 16px; /* Slightly larger font size for visibility */
+  width: auto; /* Allow the button to grow dynamically */
+  min-width: 150px; /* Set a minimum width to ensure enough space */
+  border-radius: 25px; /* Rounded corners */
+  display: flex;
+  align-items: center; /* Center align icon and name */
+}
+
+.profile-button i {
+  font-size: 20px; /* Larger icon */
+  margin-right: 10px; /* Space between icon and name */
+}
+
+#salesRepName {
+  white-space: nowrap; /* Prevent text wrapping to new lines */
+  font-weight: bold; /* Make the name bold for emphasis */
+  overflow: hidden; /* Prevent overflow if the name is too long */
+  text-overflow: ellipsis; /* Add ellipsis if the text overflows */
+}
+
+.dropdown-arrow {
+  margin-left: auto;
+  transition: transform 0.3s ease; /* Smooth rotation transition */
+}
+
+.dropdown-arrow.rotate {
+  transform: rotate(180deg); /* Rotate the arrow when dropdown is open */
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #dc3545; /* Red color for log out */
+}
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%; /* Increased the width */
+  margin: 50px auto;
+  padding: 30px; /* Increased padding for better spacing */
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Aligns content to the left */
+  margin-bottom: 20px;
+  width: 100%; /* Ensures the header takes full width */
+}
+
+.form-header h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.form-header h1 i {
+  margin-right: 10px; /* Space between icon and text */
+  font-size: 1.5em;
+  color: #00c5cd; /* Icon color */
+}
+
+/* Ensure Font Awesome is loaded */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+/* Label styling */
+label::before {
+  content: '●'; /* Blue circle before the label */
+  color: #00c5cd; /* Blue color for the circle */
+  font-size: 1.2em; /* Adjust the size of the circle */
+  margin-right: 8px; /* Space between the circle and label text */
+  vertical-align: middle; /* Align the circle vertically to the middle */
+}
+
+label {
+  font-weight: bold;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+
+/* Input and textarea styling */
+input,
+textarea {
+  font-size: 1em;
+  padding: 12px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #00c5cd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+/* Flex layout for date and counterpart fields */
+.form-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+/* General spacing for form groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  font-size: 1.2em;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #00c5cd;
+  color: white;
+  font-weight: bold;
+  width: 30%; /* Equal width for both buttons */
+}
+
+button#backButtonMain {
+  background-color: #ccc; /* Grey background for the Back button */
+  color: rgb(33, 33, 33);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; /* Center the buttons */
+  gap: 20px; /* Reduce the gap to bring buttons closer */
+}
+
+#confirmDiv {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f7f8fa;
+  border: 1px solid #00c5cd;
+  border-radius: 8px;
+}
+
+#confirmDiv button {
+  margin: 10px;
+}
+
+.back-btn {
+  background-color: #ccc;
+  color : rgb(33, 33, 33);
+}
+
+input[readonly] {
+  background-color: #e0e0e0;
+}
+
+.language-switch-container {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.language-switch-button {
+  background-color: #1e90ff;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 600px) {
+  form {
+    width: 90%;
+    margin: 20px;
+  }
+
+  .language-switch-button {
+    width: 100%;
+  }
+}
+
+/* Style for active language link */
+.active {
+  font-weight: bold;
+  color: #fff;
+}
+.navbar {
+  height: 150px;
+}
+
+#header_div {
+  height: 69px;
+  width: 300px;
+}
+
+.edit_icon {
+  color: white;
+  background-color: #555;
+  padding: 10px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+#company_logo {
+  width: 69px;
+  height: 73px;
+}
+
+#company_name {
+  width: 207px;
+  height: 23px;
+}
+
+.user-icon {
+  display: flex; /* Center the content */
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  background-color: white; /* White circular background */
+  color: black; /* Black icon color */
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border: 1px solid black; /* Optional border for emphasis */
+  margin-right: 7px;
+}
+
+.user-icon i {
+  font-size: 24px; /* Icon size */
+}
+/* New Report Button */
+#new-report-btn {
+  background-color: #00bcd4; /* Matching blue button */
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px; /* Space between icon and text */
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#new-report-btn {
+  margin-right: 40px;
+  font-size: 1em; /* Ensure the icon scales with the text */
+  width: 150px;
+  height: 40px;
+}
+
+#new-report-btn:hover {
+  background-color: #00a4b3; /* Slightly darker hover */
+}
+
+#new_report_icon {
+  color: white;
+}
+
+#the_header {
+  height: 150px;
+}
+
+#logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #f9fbff; /* Light background */
+  border: 1px solid #dfe2e5; /* Light border */
+  border-radius: 12px; /* Rounded corners */
+  color: #e74c3c; /* Red text */
+  font-size: 16px; /* Text size */
+  font-family: 'Rounded Mplus 1c', 'Quicksand', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.dropdown-menu {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}

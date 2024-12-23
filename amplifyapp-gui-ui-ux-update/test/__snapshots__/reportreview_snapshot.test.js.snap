@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sales Report Review Page renders the Sales Report Review header and structure 1`] = `
+<body>
+  
+    
+  <header
+    class="navbar navbar-expand-lg navbar-light bg-light"
+  >
+    
+        
+    <div
+      class="container-fluid d-flex justify-content-between align-items-center"
+    >
+      
+            
+      <div
+        class="d-flex align-items-center"
+      >
+        
+                
+        <a
+          class="d-flex align-items-center text-decoration-none"
+          href="report_review.html"
+        >
+          
+                    
+          <span
+            class="rounded-pill px-3 py-1 bg-light-blue text-secondary"
+            id="company-logo"
+          >
+            
+                        
+            <img
+              alt="Sanyo Steel Co Ltd Logo"
+              src="https://i.postimg.cc/SKq3ZtJZ/KK-logo.png"
+              style="max-height: 40px; max-width: auto;"
+            />
+            
+                    
+          </span>
+          
+                    
+          <span
+            class="h4 font-weight-bold ml-2"
+            id="report-review"
+            style="color: #00a4b3;"
+          >
+            営業報告システム
+          </span>
+          
+                
+        </a>
+        
+            
+      </div>
+      
+            
+      <div
+        class="d-flex align-items-center"
+      >
+        
+                
+        <div
+          class="mr-4"
+          id="language-switch"
+        >
+          
+                    
+          <a
+            class="text-muted"
+            id="lang-jp"
+          >
+            日本語
+          </a>
+           | 
+                    
+          <a
+            class="text-muted"
+            id="lang-en"
+          >
+            English
+          </a>
+          
+                
+        </div>
+        
+                
+        <button
+          class="btn btn-primary mr-3"
+          id="new-report-btn"
+        >
+          
+                    
+          <i
+            class="fas fa-edit"
+          />
+           新規作成
+                
+        </button>
+        
+                
+        <div
+          class="dropdown"
+        >
+          
+                    
+          <button
+            class="btn btn-outline-secondary profile-button"
+            id="profileButton"
+            type="button"
+          >
+            
+                        
+            <i
+              class="fas fa-user-circle"
+            />
+            
+                        
+            <span
+              id="salesRepName"
+            >
+              Loading...
+            </span>
+            
+                        
+            <i
+              class="fas fa-chevron-down dropdown-arrow"
+            />
+            
+                    
+          </button>
+          
+                    
+          <ul
+            class="dropdown-menu"
+            id="dropdownMenu"
+            style="display:none;"
+          >
+            
+                        
+            <li>
+              
+                            
+              <button
+                class="dropdown-item text-danger"
+                id="logout"
+              >
+                
+                                
+                <i
+                  class="fas fa-power-off"
+                />
+                 ログアウト
+                            
+              </button>
+              
+                        
+            </li>
+            
+                    
+          </ul>
+          
+                
+        </div>
+        
+            
+      </div>
+      
+        
+    </div>
+    
+    
+  </header>
+  
+    
+</body>
+`;
